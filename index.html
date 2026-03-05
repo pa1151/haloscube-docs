@@ -36,15 +36,8 @@
                 --accent: #0077cc;
                 --accent-glow: rgba(0, 119, 204, 0.1);
             }
-            
-            body {
-                background: white;
-            }
-            
-            @page {
-                size: A4;
-                margin: 0;
-            }
+            body { background: white; }
+            @page { size: A4; margin: 0; }
         }
 
         body {
@@ -71,11 +64,11 @@
             border-bottom: 2px solid var(--border);
         }
 
-         .logo svg {
+        .logo svg {
             height: 60px;
             width: auto;
             filter: drop-shadow(0 0 10px var(--accent-glow));
-         }
+        }
 
         .title h1 {
             font-size: 2.5rem;
@@ -83,17 +76,16 @@
             letter-spacing: 2px;
         }
 
-        .accent {
-            color: var(--accent);
-        }
+        .accent { color: var(--accent); }
 
         .badge {
             display: inline-block;
             padding: 6px 16px;
             border-radius: 20px;
             font-weight: 600;
-            margin-top: 8px;
-            padding-left: 18px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .badge.time {
@@ -154,15 +146,8 @@
             box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        .step h3 {
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-
-        .step p {
-            color: var(--text-dim);
-            margin-bottom: 12px;
-        }
+        .step h3 { margin-top: 0; margin-bottom: 12px; }
+        .step p { color: var(--text-dim); margin-bottom: 12px; }
 
         .info-box {
             background: var(--bg);
@@ -182,38 +167,32 @@
             background: rgba(0, 255, 136, 0.1);
         }
 
-        .info-box strong {
-            color: var(--text);
-        }
+        .info-box strong { color: var(--text); }
 
         .credential-box {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 12px 0;
-        }
-
-        .credential {
+            gap: 12px;
             background: var(--bg);
             border: 2px solid var(--accent);
             border-radius: 8px;
-            padding: 12px;
-            text-align: center;
+            padding: 16px;
+            margin: 12px 0;
         }
 
         .credential label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-dim);
-            margin-bottom: 8px;
-            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
         }
 
         .credential code {
-            font-family: 'Courier New', monospace;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--accent);
-            font-weight: 700;
+            font-family: 'Courier New', monospace;
         }
 
         .url-highlight {
@@ -223,262 +202,139 @@
             padding: 16px;
             text-align: center;
             margin: 12px 0;
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .url-highlight code {
+            font-size: 1.3rem;
+            color: var(--accent);
             font-family: 'Courier New', monospace;
-            font-size: 1.5rem;
-            color: var(--accent);
+        }
+
+        .checklist { display: flex; flex-direction: column; gap: 10px; }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            background: var(--bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .check-icon {
+            color: var(--success);
+            font-size: 1.2rem;
             font-weight: 700;
-        }
-
-        .steps-list {
-            list-style: none;
-            counter-reset: item;
-        }
-
-        .steps-list li {
-            counter-increment: item;
-            margin-bottom: 8px;
-            padding-left: 35px;
-            position: relative;
-            color: var(--text-dim);
-        }
-
-        .steps-list li::before {
-            content: counter(item);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: rgba(0, 212, 255, 0.2);
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .feature {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .feature h4 {
-            font-size: 0.95rem;
-            color: var(--text);
-            margin-bottom: 6px;
-        }
-
-        .feature p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .gesture-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .gesture {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .gesture-icon {
-            font-size: 2.5rem;
             flex-shrink: 0;
         }
 
-        .gesture-text h4 {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 4px;
+        .steps-list {
+            color: var(--text-dim);
+            padding-left: 20px;
+            margin: 8px 0;
         }
 
-        .gesture-text p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
+        .steps-list li { margin-bottom: 6px; }
+        .steps-list li strong { color: var(--text); }
+
+        code {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--accent);
         }
 
         .troubleshooting {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            margin-top: 16px;
         }
+
+        .troubleshooting:first-child { border-top: none; margin-top: 0; }
 
         .troubleshooting h3 {
-            color: var(--text);
-            margin-bottom: 8px;
             font-size: 1rem;
+            color: var(--warning);
+            margin-bottom: 10px;
         }
 
-        .troubleshooting ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .troubleshooting li {
-            padding-left: 25px;
-            position: relative;
-            margin-bottom: 6px;
+        .troubleshooting ul,
+        .troubleshooting ol {
             color: var(--text-dim);
+            padding-left: 20px;
         }
 
-        .troubleshooting li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--success);
-        }
+        .troubleshooting li { margin-bottom: 6px; }
+        .troubleshooting li strong { color: var(--text); }
 
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-left h3 {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 6px;
-        }
-
-        .footer-left p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .footer-right {
-            text-align: right;
-        }
-
-        .footer-right p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 4px;
-        }
-
-        .footer-right a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .footer-right a:hover {
-            text-decoration: underline;
-        }
-
-        .checklist {
+        .app-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin: 16px 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 12px;
         }
 
-        .checklist-item {
+        .app-item {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .check-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            background: rgba(0, 255, 136, 0.2);
-            color: var(--success);
-            border: 1px solid var(--success);
+        .app-icon { font-size: 1.4rem; }
+
+        .app-info .app-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .app-info .app-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            flex-shrink: 0;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
         }
 
-        @media print {
-            .page {
-                page-break-after: always;
-            }
+        .footer-left h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--accent);
         }
 
-        @media (max-width: 768px) {
-            .page {
-                padding: 15px;
-            }
-
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .title h1 {
-                font-size: 2rem;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gesture-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .checklist {
-                grid-template-columns: 1fr;
-            }
-
-            .credential-box {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .footer-right {
-                text-align: center;
-            }
+        .footer-left p,
+        .footer-right p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 4px;
         }
+
+        .footer-right a { color: var(--accent); text-decoration: none; }
+        .footer-right a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
     <div class="page">
+
         <!-- Header -->
         <header class="header">
             <div class="logo">
@@ -510,7 +366,7 @@
                 </div>
                 <div class="checklist-item">
                     <span class="check-icon">✓</span>
-                    <span>Your home WiFi name & password</span>
+                    <span>Your home WiFi name &amp; password</span>
                 </div>
                 <div class="checklist-item">
                     <span class="check-icon">✓</span>
@@ -519,41 +375,87 @@
             </div>
         </div>
 
+        <!-- Hardware Setup -->
+        <div class="card">
+            <h2>Hardware Setup</h2>
+            <p>Before powering on, make sure everything is properly assembled.</p>
+
+            <div class="troubleshooting" style="border-top: none; margin-top: 0; padding-top: 0;">
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+
+                    <div class="checklist-item" style="align-items: flex-start; gap: 14px;">
+                        <span class="check-icon" style="margin-top: 2px;">1</span>
+                        <span><strong>Insert the display module</strong> — Slide it fully into the base with the USB-C port facing the <strong>rear</strong> of the base.</span>
+                    </div>
+
+                    <div class="checklist-item" style="align-items: flex-start; gap: 14px;">
+                        <span class="check-icon" style="margin-top: 2px;">2</span>
+                        <span><strong>Clean the display</strong> — Use the included lens cloth to remove any dust or debris from the display surface.</span>
+                    </div>
+
+                    <div class="checklist-item" style="align-items: flex-start; gap: 14px;">
+                        <span class="check-icon" style="margin-top: 2px;">3</span>
+                        <span><strong>Clean the prism cube</strong> — Use the included cloth to remove any dust or debris from all faces of the glass prism.</span>
+                    </div>
+
+                    <div class="checklist-item" style="align-items: flex-start; gap: 14px;">
+                        <span class="check-icon" style="margin-top: 2px;">4</span>
+                        <span><strong>Seat the prism cube</strong> — Place the front edge down first, then rotate the rear edge down until it snaps firmly and snugly into the base.</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 16px; font-size: 0.85rem; color: var(--text-dim);">
+                <strong style="color: var(--text);">ℹ️ Button Reference</strong> — The three buttons on the right side of the device are:
+                <ul style="margin-top: 8px; padding-left: 18px; display: flex; flex-direction: column; gap: 4px;">
+                    <li><strong style="color: var(--text);">Front</strong> — Reset</li>
+                    <li><strong style="color: var(--text);">Middle</strong> — Boot Option <span style="color: var(--text-dim);">(not used in normal operation)</span></li>
+                    <li><strong style="color: var(--text);">Rear</strong> — Reserved for future use</li>
+                </ul>
+            </div>
+        </div>
+
         <!-- Step 1 -->
         <div class="step">
             <div class="step-number">1</div>
             <h3>Power On</h3>
-            <p>Plug in your Halos Cube via USB-C and watch for the WiFi connection information. You should see <strong>"Connect to: Halos-Cube-Setup"</strong> on the display.</p>
+            <p>Plug in your Halos Cube via USB-C to an available USB port or a standard wall power adapter, and watch for the WiFi connection information.
+            You should see <strong>"Connect to: Halos-Cube-Setup"</strong> on the display.</p>
         </div>
 
         <!-- Step 2 -->
         <div class="step">
             <div class="step-number">2</div>
             <h3>Connect to Setup WiFi</h3>
-            <p>Open WiFi settings on your phone or computer and look for:</p>
+            <p>Open WiFi settings on your phone or computer and connect to:</p>
             <div class="credential-box">
                 <div class="credential">
-                    <label>Network Name:</label>
+                    <label>Network Name</label>
                     <code>Halos-Cube-Setup</code>
                 </div>
+                <div class="credential">
+                    <label>Password</label>
+                    <code>haloscube</code>
+                </div>
             </div>
-            <p><strong>What You'll See:</strong></p>
-            <ul class="steps-list">
-                <li><strong>Phone:</strong> A listing of WiFi networks should appear automatically</li>
-                <li><strong>Computer:</strong> A listing of WiFi networks should appear automatically, but if not, open your browser and go to <code>http://192.168.4.1</code></li>
-            </ul>
             <div class="info-box warning">
-                <strong>⚠️ Note:</strong> If you don't see your WiFi network, wait 30 seconds and refresh WiFi list.
+                <strong>⚠️ Note:</strong> Your phone or computer may show a "Not Secure" or "No Internet" warning — this is normal. Your WiFi password is stored only on your Halos Cube and never leaves your network.
             </div>
+            <p><strong>If the setup page doesn't open automatically:</strong></p>
+            <ul class="steps-list">
+                <li><strong>Phone:</strong> Tap the notification that says "Sign in to network"</li>
+                <li><strong>Computer:</strong> Open your browser and go to <code>http://192.168.4.1</code></li>
+            </ul>
         </div>
 
         <!-- Step 3 -->
         <div class="step">
             <div class="step-number">3</div>
             <h3>Configure Your WiFi</h3>
-            <p>You should now see the <strong>Halos Cube Dashboard</strong>!</p>
+            <p>You should now see the <strong>Halos Cube Setup</strong> page!</p>
             <ol class="steps-list">
-                <li>Click on your network name</li>
+                <li>Click on your home network name</li>
                 <li>Enter your WiFi password</li>
                 <li>Click "Connect"</li>
             </ol>
@@ -575,7 +477,7 @@
             <h3>Access Your Cube</h3>
             <p>Now that your cube is on your WiFi:</p>
             <ol class="steps-list">
-                <li>Reconnect your phone or computer to the same WiFi network (if it didn't automatically)</li>
+                <li>Reconnect your phone or computer to your home WiFi network (if it didn't automatically)</li>
                 <li>Open a browser and go to:</li>
             </ol>
             <div class="url-highlight">
@@ -588,7 +490,7 @@
             </ul>
         </div>
 
-        <!-- Step 5 -->
+        <!-- Done -->
         <div class="card">
             <h2>You're Done!</h2>
             <p>Your Halos Cube is now:</p>
@@ -603,84 +505,107 @@
                 </div>
                 <div class="checklist-item">
                     <span class="check-icon">✓</span>
-                    <span>Ready to use</span>
+                    <span>Ready to configure from <code>http://halos-cube.local</code></span>
                 </div>
             </div>
-        </div>
 
-        <!-- Explore -->
-        <div class="card">
-            <h2>Explore!</h2>
-            <p>From the dashboard you can:</p>
-            <div class="feature-grid">
-                <div class="feature">
-                    <div class="feature-icon">🔄</div>
-                    <h4>Switch Apps</h4>
-                    <p>Try Clock, Weather, Photos, etc.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">☁️</div>
-                    <h4>Configure Settings</h4>
-                    <p>Modes, features, etc.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🔆</div>
-                    <h4>Adjust Brightness</h4>
-                    <p>Make it dimmer for night use</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Touch Gestures -->
-        <div class="card">
-            <h2>Tap Gestures</h2>
-            <div class="gesture-grid">
-                <div class="gesture">
-                    <div class="gesture-icon">👆</div>
-                    <div class="gesture-text">
-                        <h4>Single Tap</h4>
-                        <p>Action in current app (refresh / change mode)</p>
+            <h3>What's on your Cube</h3>
+            <div class="app-grid">
+                <div class="app-item">
+                    <div class="app-icon">🕐</div>
+                    <div class="app-info">
+                        <div class="app-name">Clock</div>
+                        <div class="app-desc">Time &amp; date display</div>
                     </div>
                 </div>
-                <div class="gesture">
-                    <div class="gesture-icon">👆👆</div>
-                    <div class="gesture-text">
-                        <h4>Double Tap</h4>
-                        <p>Switch to next app</p>
+                <div class="app-item">
+                    <div class="app-icon">🌤</div>
+                    <div class="app-info">
+                        <div class="app-name">Weather</div>
+                        <div class="app-desc">Current conditions</div>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">🖼</div>
+                    <div class="app-info">
+                        <div class="app-name">Photos</div>
+                        <div class="app-desc">Your photo albums</div>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">🌲</div>
+                    <div class="app-info">
+                        <div class="app-name">Tree</div>
+                        <div class="app-desc">Ambient visual</div>
                     </div>
                 </div>
             </div>
+            <p style="margin-top:14px; font-size: 0.85rem;">Configure apps and settings at <code>http://halos-cube.local</code></p>
         </div>
 
-        <!-- What's Next -->
+        <!-- Companion App -->
         <div class="card">
-            <h2>What's Next?</h2>
-            
-            <h3>Setup Weather</h3>
+            <h2>Halos Cube Companion App</h2>
+            <p>The Halos Cube Companion streams live content from your PC to your cube over your network. Two modes are included:</p>
+
+            <div class="app-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 16px;">
+                <div class="app-item">
+                    <div class="app-icon">🎵</div>
+                    <div class="app-info">
+                        <div class="app-name">Now Playing</div>
+                        <div class="app-desc">Album art &amp; track info for most content playing on your PC</div>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">📊</div>
+                    <div class="app-info">
+                        <div class="app-name">System Stats</div>
+                        <div class="app-desc">CPU, RAM &amp; GPU live</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="url-highlight" style="text-align:left; padding: 14px 18px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                    <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">Download</div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span style="font-size: 0.75rem; background: rgba(0,212,255,0.15); color: var(--accent); border: 1px solid rgba(0,212,255,0.3); border-radius: 12px; padding: 2px 10px;">Windows 10+</span>
+                        <span style="font-size: 0.75rem; background: rgba(255,170,0,0.1); color: var(--warning); border: 1px solid rgba(255,170,0,0.3); border-radius: 12px; padding: 2px 10px;">macOS — Coming Soon</span>
+                    </div>
+                </div>
+                <a href="https://github.com/pa1151/halos-cube-companion-release/releases/tag/v1.0.2"
+                   style="color: var(--accent); font-size: 1rem; font-weight: 600; text-decoration: none;">
+                    Halos Cube Companion PC App
+                </a>
+                <div style="margin-top: 4px; font-size: 0.8rem; color: var(--text-dim);">v1.0.2 &nbsp;·&nbsp; github.com/pa1151/halos-cube-companion-release</div>
+            </div>
+
+            <div class="info-box warning" style="margin-top: 12px;">
+                <strong>⚠️ Windows Firewall Prompt:</strong> On first launch, Windows will ask if you want to allow the app to communicate on your network. Click <strong>"Allow"</strong> — this is required for the app to find and connect to your Halos Cube.
+            </div>
+
+            <h3>Getting Started</h3>
             <ol class="steps-list">
-                <li>Get your free API key at <a href="https://openweathermap.org/api" style="color: var(--accent);">openweathermap.org</a></li>
-                <li>Dashboard → Weather Settings → Paste API key</li>
-                <li>Enter your city's Zip Code</li>
-                <li>Save!</li>
+                <li>Download and run the installer from the link above</li>
+                <li>The app will appear in your Windows system tray (bottom-right)</li>
+                <li>Make sure your Halos Cube is on the same WiFi network — it will be discovered automatically</li>
+                <li>Right-click the tray icon to access Settings or switch modes</li>
             </ol>
 
-            <h3>Halos Cube Companion App</h3>
-            <p>Download the Halos Cube Companion App:</p>
-            <ul class="steps-list">
-                <li><strong>Select Spotify and authenticate</strong> - Music album art appears on your cube!</li>
-                <li><strong>Select System Dashboard</strong> - Show your PC's stats in real-time!</li>
-            </ul>
+            <div class="info-box">
+                <strong>Requirements:</strong> Your Halos Cube must be set up and connected to the same WiFi network as your PC.
+            </div>
         </div>
 
         <!-- Updates -->
         <div class="card">
-            <h2>Updates</h2>
-            <p>Halos Cube supports Over the Air (OTA) Updates. Updates provide new features or address issues with the software.</p>
+            <h2>Keeping Your Cube Up to Date</h2>
+            <p>Updates provide new features or address issues with the software.</p>
             <ol class="steps-list">
                 <li>Open dashboard: <code>http://halos-cube.local</code></li>
                 <li>Click "Updates" → "Check for Updates" button</li>
                 <li>If the Latest version is newer, click "Install Update"</li>
-                <li>Wait for the firmware to update (<2 minutes)
+                <li>Wait for the firmware to update (&lt;2 minutes)
                     <ul style="margin-top: 8px; list-style: none; padding-left: 20px;">
                         <li style="color: var(--text-dim); font-style: italic;">While installing, do not power off!</li>
                         <li style="color: var(--text-dim); font-style: italic;">When the update completes, the cube will reboot.</li>
@@ -693,7 +618,7 @@
         <!-- Troubleshooting -->
         <div class="card">
             <h2>Need Help?</h2>
-            
+
             <div class="troubleshooting">
                 <h3>Nothing happens when I power on</h3>
                 <ul>
@@ -708,23 +633,35 @@
                 <ul>
                     <li>Wait 60 seconds after power on</li>
                     <li>Check you're looking at 2.4GHz networks (Halos Cube does not support 5GHz)</li>
-                    <li>Cube might already be connected to WiFi - check if clock is showing</li>
-                    <li>Press the Reset Button (Front on right side) and check again</li>
+                    <li>Cube might already be connected to WiFi — check if clock is showing</li>
+                    <li>Press the Reset Button (front, right side) and check again</li>
                 </ul>
             </div>
 
             <div class="troubleshooting">
                 <h3>Can't connect to the setup network</h3>
                 <ul>
+                    <li>Make sure you're using the password: <code>haloscube</code></li>
                     <li>Forget the network and try again</li>
                     <li>Move closer to the cube</li>
                 </ul>
             </div>
 
             <div class="troubleshooting">
+                <h3>Browser shows "Not Secure" warning on the setup page</h3>
+                <ul>
+                    <li>This is expected — the setup page uses local HTTP, not HTTPS</li>
+                    <li>It's safe to proceed; no personal data is transmitted over the internet during setup</li>
+                    <li>After setup, your cube communicates only on your home network</li>
+                </ul>
+            </div>
+
+            <div class="troubleshooting">
                 <h3>"http://halos-cube.local" doesn't work</h3>
                 <ul>
-                    <li>Ensure that your phone/computer is on the same WiFi network</li>
+                    <li>Ensure your phone or computer is on the same WiFi network as the cube</li>
+                    <li>Try the device IP address instead — you can find it on the cube's display or in your router's connected devices list</li>
+                    <li>Some older Android devices don't support <code>.local</code> addresses — use the IP directly</li>
                 </ul>
             </div>
 
@@ -732,7 +669,7 @@
                 <h3>Display shows weird colors or glitches</h3>
                 <ul>
                     <li>Unplug and replug the cube</li>
-                    <li>May need to update firmware - Dashboard → Updates</li>
+                    <li>May need to update firmware — Dashboard → Updates</li>
                 </ul>
             </div>
 
@@ -747,15 +684,15 @@
             </div>
 
             <div class="troubleshooting">
-                <h3>What if an update fails</h3>
+                <h3>What if an update fails?</h3>
                 <ul>
-                    <li>In the event of a failed update, the Cube will continue to use the existing version</li>
+                    <li>The cube will continue using the existing firmware version</li>
                     <li>Try again in a few minutes</li>
                 </ul>
             </div>
 
             <div class="troubleshooting">
-                <h3>How do I perform a Factory Reset</h3>
+                <h3>How do I perform a Factory Reset?</h3>
                 <ol class="steps-list">
                     <li>Open dashboard: <code>http://halos-cube.local</code></li>
                     <li>Click "Advanced" → "Factory Reset" button</li>
@@ -772,11 +709,12 @@
                 </div>
                 <div class="footer-right">
                     <p>📧 <a href="mailto:info@haloscube.com">info@haloscube.com</a></p>
-                    <p>💬 <a href="https://discord.gg/HwYwGp7D" target="_blank">Discord Forum</a></p>
+                    <p>💬 <a href="https://discord.gg/7kPK953kP6" target="_blank">Discord Forum</a></p>
                     <p style="margin-top: 20px; font-size: 0.75rem;">Enjoy your Halos Cube!</p>
                 </div>
             </div>
         </footer>
+
     </div>
 </body>
 </html>

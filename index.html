@@ -36,8 +36,15 @@
                 --accent: #0077cc;
                 --accent-glow: rgba(0, 119, 204, 0.1);
             }
-            body { background: white; }
-            @page { size: A4; margin: 0; }
+
+            body {
+                background: white;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
         }
 
         body {
@@ -45,6 +52,7 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            font-size: 16px;
         }
 
         .page {
@@ -76,7 +84,9 @@
             letter-spacing: 2px;
         }
 
-        .accent { color: var(--accent); }
+        .accent {
+            color: var(--accent);
+        }
 
         .badge {
             display: inline-block;
@@ -117,6 +127,7 @@
         .card p {
             color: var(--text-dim);
             margin-bottom: 12px;
+            max-width: 68ch;
         }
 
         .step {
@@ -146,8 +157,16 @@
             box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        .step h3 { margin-top: 0; margin-bottom: 12px; }
-        .step p { color: var(--text-dim); margin-bottom: 12px; }
+        .step h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            max-width: 68ch;
+        }
 
         .info-box {
             background: var(--bg);
@@ -167,7 +186,9 @@
             background: rgba(0, 255, 136, 0.1);
         }
 
-        .info-box strong { color: var(--text); }
+        .info-box strong {
+            color: var(--text);
+        }
 
         .credential-box {
             display: grid;
@@ -178,6 +199,12 @@
             border-radius: 8px;
             padding: 16px;
             margin: 12px 0;
+            min-width: 0;
+        }
+
+        .credential {
+            min-width: 0;
+            text-align: center;
         }
 
         .credential label {
@@ -193,6 +220,8 @@
             font-size: 1.1rem;
             color: var(--accent);
             font-family: 'Courier New', monospace;
+            font-weight: 700;
+            overflow-wrap: anywhere;
         }
 
         .url-highlight {
@@ -203,15 +232,23 @@
             text-align: center;
             margin: 12px 0;
             box-shadow: 0 0 20px var(--accent-glow);
+            min-width: 0;
         }
 
         .url-highlight code {
             font-size: 1.3rem;
             color: var(--accent);
             font-family: 'Courier New', monospace;
+            font-weight: 700;
+            overflow-wrap: anywhere;
         }
 
-        .checklist { display: flex; flex-direction: column; gap: 10px; }
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 16px 0;
+        }
 
         .checklist-item {
             display: flex;
@@ -221,6 +258,7 @@
             background: var(--bg);
             border-radius: 8px;
             border: 1px solid var(--border);
+            min-width: 0;
         }
 
         .check-icon {
@@ -231,13 +269,41 @@
         }
 
         .steps-list {
-            color: var(--text-dim);
-            padding-left: 20px;
+            list-style: none;
+            counter-reset: item;
             margin: 8px 0;
         }
 
-        .steps-list li { margin-bottom: 6px; }
-        .steps-list li strong { color: var(--text); }
+        .steps-list li {
+            counter-increment: item;
+            margin-bottom: 8px;
+            padding-left: 35px;
+            position: relative;
+            color: var(--text-dim);
+            max-width: 68ch;
+        }
+
+        .steps-list li::before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .steps-list li strong {
+            color: var(--text);
+        }
 
         code {
             background: rgba(0, 212, 255, 0.1);
@@ -247,6 +313,11 @@
             font-family: 'Courier New', monospace;
             font-size: 0.9em;
             color: var(--accent);
+            overflow-wrap: anywhere;
+        }
+
+        a {
+            overflow-wrap: anywhere;
         }
 
         .troubleshooting {
@@ -255,7 +326,10 @@
             margin-top: 16px;
         }
 
-        .troubleshooting:first-child { border-top: none; margin-top: 0; }
+        .troubleshooting:first-child {
+            border-top: none;
+            margin-top: 0;
+        }
 
         .troubleshooting h3 {
             font-size: 1rem;
@@ -267,16 +341,33 @@
         .troubleshooting ol {
             color: var(--text-dim);
             padding-left: 20px;
+            max-width: 68ch;
         }
 
-        .troubleshooting li { margin-bottom: 6px; }
-        .troubleshooting li strong { color: var(--text); }
+        .troubleshooting li {
+            margin-bottom: 6px;
+        }
+
+        .troubleshooting li strong {
+            color: var(--text);
+        }
 
         .app-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin-top: 12px;
+        }
+
+        .explore-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .tap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 4px;
         }
 
         .app-item {
@@ -287,17 +378,29 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            min-width: 0;
         }
 
-        .app-icon { font-size: 1.4rem; }
+        .app-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
 
-        .app-info .app-name {
+        .app-info,
+        .gesture-copy,
+        .checklist-item span:last-child {
+            min-width: 0;
+        }
+
+        .app-info .app-name,
+        .gesture-copy .app-name {
             font-weight: 600;
             font-size: 0.95rem;
             color: var(--text);
         }
 
-        .app-info .app-desc {
+        .app-info .app-desc,
+        .gesture-copy .app-desc {
             font-size: 0.8rem;
             color: var(--text-dim);
         }
@@ -328,31 +431,173 @@
             margin-bottom: 4px;
         }
 
-        .footer-right a { color: var(--accent); text-decoration: none; }
-        .footer-right a:hover { text-decoration: underline; }
+        .footer-right a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer-right a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            .page {
+                page-break-after: always;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+
+            .page {
+                min-height: auto;
+                padding: 16px;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 14px;
+                margin-bottom: 22px;
+                padding-bottom: 16px;
+            }
+
+            .logo svg {
+                width: min(100%, 240px);
+                height: auto;
+            }
+
+            .title h1 {
+                font-size: 1.75rem;
+                letter-spacing: 1px;
+            }
+
+            .badge {
+                margin-top: 0;
+            }
+
+            .card {
+                padding: 18px;
+                margin-bottom: 16px;
+                border-radius: 10px;
+            }
+
+            .card h2 {
+                font-size: 1.15rem;
+                margin-bottom: 12px;
+            }
+
+            .card h3,
+            .step h3,
+            .troubleshooting h3 {
+                line-height: 1.35;
+            }
+
+            .step {
+                padding: 18px;
+                padding-top: 62px;
+            }
+
+            .step-number {
+                left: 18px;
+                top: 16px;
+                width: 34px;
+                height: 34px;
+                font-size: 1.1rem;
+            }
+
+            .steps-list li {
+                padding-left: 32px;
+            }
+
+            .steps-list li::before {
+                width: 22px;
+                height: 22px;
+                font-size: 0.8rem;
+            }
+
+            .info-box,
+            .url-highlight,
+            .credential-box,
+            .app-item,
+            .checklist-item {
+                padding: 14px;
+            }
+
+            .credential-box,
+            .app-grid,
+            .explore-grid,
+            .tap-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .url-highlight code {
+                font-size: 1.05rem;
+                line-height: 1.5;
+            }
+
+            .credential code {
+                font-size: 1rem;
+            }
+
+            .app-item {
+                width: 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .footer-right {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding: 14px;
+            }
+
+            .card,
+            .step {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .step {
+                padding-top: 58px;
+            }
+
+            .badge {
+                width: 100%;
+                text-align: center;
+                padding: 8px 14px;
+            }
+
+            .url-highlight code {
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="page">
-
         <!-- Header -->
         <header class="header">
             <div class="logo">
                 <svg viewBox="0 0 675 225" width="270" height="90" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Circle with cutout -->
                     <path d="M100 0C152.875 0 196.164 41.0376 199.757 93H171.662C168.142 56.5204 137.403 28 100 28C60.2355 28 28 60.2355 28 100C28 139.765 60.2355 172 100 172C114.926 172 128.79 167.457 140.287 159.681L158.195 181.329C141.802 193.081 121.709 200 100 200C44.7715 200 0 155.228 0 100C0 44.7715 44.7715 0 100 0Z" fill="#FFFFFF"/>
-                    <!-- Segment -->
                     <path d="M200 100C200 114.72 196.75 129.259 190.483 142.578C184.215 155.897 175.084 167.668 163.742 177.051L145.895 155.477C154.061 148.721 160.635 140.246 165.148 130.656C169.66 121.066 172 110.598 172 100H200Z" fill="#FFFFFF"/>
-                    <!-- HALOS text (complete with sliced O and S) -->
                     <path d="M587.659 100C587.74 101.816 587.781 103.71 587.781 105.68C587.781 120.186 585.008 130.683 579.461 137.168C574 143.653 565.04 146.896 552.581 146.896C539.013 146.896 529.711 143.909 524.677 137.936C519.728 131.962 517.253 121.21 517.253 105.68C517.253 103.713 517.305 101.82 517.405 100H525.726C525.624 101.799 525.573 103.692 525.573 105.68C525.573 111.909 525.914 117.029 526.597 121.04C527.279 125.051 528.346 128.293 529.797 130.768C531.674 133.754 534.32 135.931 537.733 137.296C541.147 138.576 546.096 139.216 552.581 139.216C562.65 139.216 569.648 136.699 573.573 131.664C577.499 126.629 579.461 117.968 579.461 105.68C579.461 103.671 579.425 101.778 579.354 100H587.659ZM647.982 64.4639C652.078 64.4639 655.748 64.6769 658.99 65.1035C662.318 65.4449 665.305 65.9996 667.95 66.7676V74.3203C665.134 73.5523 662.02 72.9976 658.606 72.6562C655.193 72.2296 651.608 72.0156 647.854 72.0156C640.515 72.0157 635.353 73.1253 632.366 75.3438C629.38 77.4771 627.886 81.275 627.886 86.7363C627.886 90.3199 628.611 93.0079 630.062 94.7998C631.512 96.5918 633.902 97.8716 637.23 98.6396L657.582 103.632C664.153 105.168 668.547 107.387 670.766 110.288C672.984 113.104 674.094 117.456 674.094 123.344C674.094 131.962 671.876 138.064 667.438 141.648C663.001 145.147 655.918 146.896 646.19 146.896C640.985 146.896 635.95 146.555 631.086 145.872C626.222 145.189 622.382 144.293 619.566 143.184V135.376C623.833 136.656 628.185 137.638 632.622 138.32C637.059 138.918 641.582 139.216 646.19 139.216C653.358 139.216 658.393 138.149 661.294 136.016C664.195 133.797 665.646 129.616 665.646 123.472C665.645 119.632 664.92 116.859 663.47 115.152C662.019 113.446 659.16 112.122 654.894 111.184L634.542 106.32C629.251 105.04 625.454 102.907 623.15 99.9199C620.846 96.9333 619.694 92.752 619.694 87.376C619.694 79.4401 621.955 73.6371 626.478 69.9678C631 66.2984 638.169 64.4639 647.982 64.4639ZM254.304 101.456H300.384V65.7441H308.704V146H300.384V109.136H254.304V146H246.112V65.7441H254.304V101.456ZM412.699 146H403.867L395.675 124.88H356.763L348.443 146H339.739L371.995 65.7441H380.571L412.699 146ZM451.829 138.192H492.149V146H443.637V65.7441H451.829V138.192ZM376.091 73.04C375.408 75.1734 374.64 77.5201 373.787 80.0801C372.934 82.6401 371.526 86.6084 369.563 91.9844L359.579 117.584H392.859L382.875 91.9844C381.595 88.6564 380.358 85.4132 379.163 82.2559C378.054 79.0132 377.029 75.9413 376.091 73.04ZM552.581 64.4639C566.064 64.4639 575.28 67.4505 580.229 73.4238C583.755 77.6063 586.044 84.132 587.101 93H578.821C578.708 92.0577 578.581 91.1643 578.438 90.3203C577.755 86.3096 576.688 83.0665 575.237 80.5918C573.445 77.5198 570.842 75.3444 567.429 74.0645C564.101 72.6992 559.152 72.0156 552.581 72.0156C542.426 72.0156 535.386 74.5337 531.461 79.5684C529.05 82.661 527.381 87.1384 526.451 93H518.091C519.278 84.8741 521.729 78.605 525.445 74.1924C530.992 67.7071 540.037 64.4639 552.581 64.4639Z" fill="#FFFFFF"/>
-                    <!-- CUBE text -->
                     <path d="M445.008 218.912C447.632 218.912 450.352 218.592 453.168 217.952C456.048 217.312 458.8 216.448 461.424 215.36V220.928C457.904 222.336 454.8 223.328 452.112 223.904C449.424 224.416 446.64 224.672 443.76 224.672C434.672 224.672 428.24 222.304 424.464 217.568C420.688 212.768 418.8 204.832 418.8 193.76C418.8 183.072 420.944 175.264 425.232 170.336C429.584 165.344 436.496 162.848 445.968 162.848C448.912 162.848 451.536 162.912 453.84 163.04C456.144 163.168 458.224 163.392 460.08 163.712V169.28C457.904 169.024 455.696 168.832 453.456 168.704C451.216 168.576 448.72 168.512 445.968 168.512C438.352 168.512 432.976 170.464 429.84 174.368C426.704 178.208 425.136 184.672 425.136 193.76C425.136 203.104 426.544 209.632 429.36 213.344C432.24 217.056 437.456 218.912 445.008 218.912ZM526.554 200.384V163.808H532.698V200.384C532.698 208.768 530.778 214.912 526.938 218.816C523.098 222.72 517.114 224.672 508.986 224.672C500.858 224.672 494.938 222.752 491.226 218.912C487.514 215.072 485.658 208.896 485.658 200.384V163.808H491.802V200.384C491.802 207.168 493.114 211.968 495.738 214.784C498.362 217.536 502.778 218.912 508.986 218.912C515.386 218.912 519.898 217.536 522.522 214.784C525.21 211.968 526.554 207.168 526.554 200.384ZM603.807 206.816C603.807 212.96 602.175 217.376 598.911 220.064C595.647 222.688 590.367 224 583.071 224H561.759V163.808H582.975C589.567 163.808 594.239 164.928 596.991 167.168C599.807 169.344 601.215 173.12 601.215 178.496C601.215 182.464 600.479 185.536 599.007 187.712C597.535 189.888 595.103 191.328 591.711 192.032C595.743 192.48 598.751 193.952 600.735 196.448C602.783 198.88 603.807 202.336 603.807 206.816ZM595.455 179.36C595.455 175.584 594.527 172.96 592.671 171.488C590.879 170.016 587.679 169.28 583.071 169.28H567.903V190.304H583.071C587.423 190.304 590.559 189.44 592.479 187.712C594.463 185.984 595.455 183.2 595.455 179.36ZM597.855 206.528C597.855 202.432 596.735 199.584 594.495 197.984C592.319 196.384 588.511 195.584 583.071 195.584H567.903V218.432H583.071C588.447 218.432 592.255 217.568 594.495 215.84C596.735 214.048 597.855 210.944 597.855 206.528ZM669.521 218.144V224H630.065V163.808H668.657V169.472H636.209V190.4H665.105V195.872H636.209V218.144H669.521Z" fill="#FFFFFF"/>
                 </svg>
-                </div>
-                <div class="badge time">Quick Start Guide</div>
+            </div>
+            <div class="badge time">Quick Start Guide</div>
         </header>
 
-        <!-- What You Need -->
         <div class="card">
             <h2>What You Need</h2>
             <div class="checklist">
@@ -375,56 +620,50 @@
             </div>
         </div>
 
-        <!-- Hardware Setup -->
         <div class="card">
             <h2>Hardware Setup</h2>
             <p>Before powering on, make sure everything is properly assembled.</p>
 
             <div class="troubleshooting" style="border-top: none; margin-top: 0; padding-top: 0;">
                 <div style="display: flex; flex-direction: column; gap: 14px;">
-
                     <div class="checklist-item" style="align-items: flex-start; gap: 14px;">
                         <span class="check-icon" style="margin-top: 2px;">1</span>
-                        <span><strong>Insert the display module</strong> — Slide it fully into the base with the USB-C port facing the <strong>rear</strong> of the base.</span>
+                        <span><strong>Insert the display module</strong> - Slide it fully into the base with the USB-C port facing the <strong>rear</strong> of the base.</span>
                     </div>
 
                     <div class="checklist-item" style="align-items: flex-start; gap: 14px;">
                         <span class="check-icon" style="margin-top: 2px;">2</span>
-                        <span><strong>Clean the display</strong> — Use the included lens cloth to remove any dust or debris from the display surface.</span>
+                        <span><strong>Clean the display</strong> - Use the included lens cloth to remove any dust or debris from the display surface.</span>
                     </div>
 
                     <div class="checklist-item" style="align-items: flex-start; gap: 14px;">
                         <span class="check-icon" style="margin-top: 2px;">3</span>
-                        <span><strong>Clean the prism cube</strong> — Use the included cloth to remove any dust or debris from all faces of the glass prism.</span>
+                        <span><strong>Clean the prism cube</strong> - Use the included cloth to remove any dust or debris from all faces of the glass prism.</span>
                     </div>
 
                     <div class="checklist-item" style="align-items: flex-start; gap: 14px;">
                         <span class="check-icon" style="margin-top: 2px;">4</span>
-                        <span><strong>Seat the prism cube</strong> — Place the front edge down first, then rotate the rear edge down until it snaps firmly and snugly into the base.</span>
+                        <span><strong>Seat the prism cube</strong> - Place the front edge down first, then rotate the rear edge down until it snaps firmly and snugly into the base.</span>
                     </div>
-
                 </div>
             </div>
 
             <div class="info-box" style="margin-top: 16px; font-size: 0.85rem; color: var(--text-dim);">
-                <strong style="color: var(--text);">ℹ️ Button Reference</strong> — The three buttons on the right side of the device are:
+                <strong style="color: var(--text);">Button Reference</strong> - The three buttons on the right side of the device are:
                 <ul style="margin-top: 8px; padding-left: 18px; display: flex; flex-direction: column; gap: 4px;">
-                    <li><strong style="color: var(--text);">Front</strong> — Reset</li>
-                    <li><strong style="color: var(--text);">Middle</strong> — Boot Option <span style="color: var(--text-dim);">(not used in normal operation)</span></li>
-                    <li><strong style="color: var(--text);">Rear</strong> — Reserved for future use</li>
+                    <li><strong style="color: var(--text);">Front</strong> - Reset</li>
+                    <li><strong style="color: var(--text);">Middle</strong> - Boot Option <span style="color: var(--text-dim);">(not used in normal operation)</span></li>
+                    <li><strong style="color: var(--text);">Rear</strong> - Reserved for future use</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Step 1 -->
         <div class="step">
             <div class="step-number">1</div>
             <h3>Power On</h3>
-            <p>Plug in your Halos Cube via USB-C to an available USB port or a standard wall power adapter, and watch for the WiFi connection information.
-            You should see <strong>"Connect to: Halos-Cube-Setup"</strong> on the display.</p>
+            <p>Plug in your Halos Cube via USB-C to an available USB port or a standard wall power adapter, and watch for the WiFi connection information. You should see <strong>"Connect to: Halos-Cube-Setup"</strong> on the display.</p>
         </div>
 
-        <!-- Step 2 -->
         <div class="step">
             <div class="step-number">2</div>
             <h3>Connect to Setup WiFi</h3>
@@ -440,7 +679,7 @@
                 </div>
             </div>
             <div class="info-box warning">
-                <strong>⚠️ Note:</strong> Your phone or computer may show a "Not Secure" or "No Internet" warning — this is normal. Your WiFi password is stored only on your Halos Cube and never leaves your network.
+                <strong>Note:</strong> Your phone or computer may show a "Not Secure" or "No Internet" warning. This is normal. Your WiFi password is stored only on your Halos Cube and never leaves your network.
             </div>
             <p><strong>If the setup page doesn't open automatically:</strong></p>
             <ul class="steps-list">
@@ -449,7 +688,6 @@
             </ul>
         </div>
 
-        <!-- Step 3 -->
         <div class="step">
             <div class="step-number">3</div>
             <h3>Configure Your WiFi</h3>
@@ -467,11 +705,10 @@
                 ✓ Halos Cube is Ready!
             </div>
             <div class="info-box">
-                <strong>⏱️ Wait Time:</strong> It may take about 30 seconds to restart and connect.
+                <strong>Wait Time:</strong> It may take about 30 seconds to restart and connect.
             </div>
         </div>
 
-        <!-- Step 4 -->
         <div class="step">
             <div class="step-number">4</div>
             <h3>Access Your Cube</h3>
@@ -490,7 +727,6 @@
             </ul>
         </div>
 
-        <!-- Done -->
         <div class="card">
             <h2>You're Done!</h2>
             <p>Your Halos Cube is now:</p>
@@ -508,87 +744,52 @@
                     <span>Ready to configure from <code>http://halos-cube.local</code></span>
                 </div>
             </div>
-
-            <h3>What's on your Cube</h3>
-            <div class="app-grid">
-                <div class="app-item">
-                    <div class="app-icon">🕐</div>
-                    <div class="app-info">
-                        <div class="app-name">Clock</div>
-                        <div class="app-desc">Time &amp; date display</div>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon">🌤</div>
-                    <div class="app-info">
-                        <div class="app-name">Weather</div>
-                        <div class="app-desc">Current conditions</div>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon">🖼</div>
-                    <div class="app-info">
-                        <div class="app-name">Photos</div>
-                        <div class="app-desc">Your photo albums</div>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon">🌲</div>
-                    <div class="app-info">
-                        <div class="app-name">Tree</div>
-                        <div class="app-desc">Ambient visual</div>
-                    </div>
-                </div>
-            </div>
-            <p style="margin-top:14px; font-size: 0.85rem;">Configure apps and settings at <code>http://halos-cube.local</code></p>
         </div>
 
-        <!-- Companion App -->
         <div class="card">
             <h2>Halos Cube Companion App</h2>
             <p>The Halos Cube Companion streams live content from your PC to your cube over your network. Two modes are included:</p>
 
-            <div class="app-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 16px;">
+            <div class="app-grid" style="margin-bottom: 16px;">
                 <div class="app-item">
                     <div class="app-icon">🎵</div>
                     <div class="app-info">
                         <div class="app-name">Now Playing</div>
-                        <div class="app-desc">Album art &amp; track info for most content playing on your PC</div>
+                        <div class="app-desc">Album art and track info for most content playing on your PC</div>
                     </div>
                 </div>
                 <div class="app-item">
                     <div class="app-icon">📊</div>
                     <div class="app-info">
                         <div class="app-name">System Stats</div>
-                        <div class="app-desc">CPU, RAM &amp; GPU live</div>
+                        <div class="app-desc">CPU, RAM and GPU live</div>
                     </div>
                 </div>
             </div>
 
-            <div class="url-highlight" style="text-align:left; padding: 14px 18px;">
+            <div class="url-highlight" style="text-align: left; padding: 14px 18px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
                     <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">Download</div>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                         <span style="font-size: 0.75rem; background: rgba(0,212,255,0.15); color: var(--accent); border: 1px solid rgba(0,212,255,0.3); border-radius: 12px; padding: 2px 10px;">Windows 10+</span>
-                        <span style="font-size: 0.75rem; background: rgba(255,170,0,0.1); color: var(--warning); border: 1px solid rgba(255,170,0,0.3); border-radius: 12px; padding: 2px 10px;">macOS — Coming Soon</span>
+                        <span style="font-size: 0.75rem; background: rgba(255,170,0,0.1); color: var(--warning); border: 1px solid rgba(255,170,0,0.3); border-radius: 12px; padding: 2px 10px;">macOS - Coming Soon</span>
                     </div>
                 </div>
-                <a href="https://github.com/pa1151/halos-cube-companion-release/releases/tag/v1.0.2"
-                   style="color: var(--accent); font-size: 1rem; font-weight: 600; text-decoration: none;">
+                <a href="https://github.com/pa1151/halos-cube-companion-release/releases/latest" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 1rem; font-weight: 600; text-decoration: none;">
                     Halos Cube Companion PC App
                 </a>
-                <div style="margin-top: 4px; font-size: 0.8rem; color: var(--text-dim);">v1.0.2 &nbsp;·&nbsp; github.com/pa1151/halos-cube-companion-release</div>
+                <div style="margin-top: 4px; font-size: 0.8rem; color: var(--text-dim);">github.com/pa1151/halos-cube-companion-release/releases/latest</div>
             </div>
 
             <div class="info-box warning" style="margin-top: 12px;">
-                <strong>⚠️ Windows Firewall Prompt:</strong> On first launch, Windows will ask if you want to allow the app to communicate on your network. Click <strong>"Allow"</strong> — this is required for the app to find and connect to your Halos Cube.
+                <strong>Windows Firewall Prompt:</strong> On first launch, Windows will ask if you want to allow the app to communicate on your network. Click <strong>"Allow"</strong> because this is required for the app to find and connect to your Halos Cube.
             </div>
 
             <h3>Getting Started</h3>
             <ol class="steps-list">
                 <li>Download and run the installer from the link above</li>
                 <li>The app will appear in your Windows system tray (bottom-right)</li>
-                <li>Make sure your Halos Cube is on the same WiFi network — it will be discovered automatically</li>
+                <li>Make sure your Halos Cube is on the same WiFi network because it will be discovered automatically</li>
                 <li>Right-click the tray icon to access Settings or switch modes</li>
             </ol>
 
@@ -597,23 +798,22 @@
             </div>
         </div>
 
-        <!-- Explore -->
         <div class="card">
             <h2>Explore!</h2>
             <p>From the dashboard you can:</p>
-            <div class="app-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="app-grid explore-grid">
                 <div class="app-item" style="flex-direction: column; text-align: center; padding: 16px 12px;">
                     <div class="app-icon">🔄</div>
                     <div class="app-info">
                         <div class="app-name">Switch Apps</div>
-                        <div class="app-desc">Try Clock, Weather, Photos &amp; more</div>
+                        <div class="app-desc">Try Clock, Weather, Photos and more</div>
                     </div>
                 </div>
                 <div class="app-item" style="flex-direction: column; text-align: center; padding: 16px 12px;">
                     <div class="app-icon">☁️</div>
                     <div class="app-info">
                         <div class="app-name">Configure</div>
-                        <div class="app-desc">Modes, features &amp; settings</div>
+                        <div class="app-desc">Modes, features and settings</div>
                     </div>
                 </div>
                 <div class="app-item" style="flex-direction: column; text-align: center; padding: 16px 12px;">
@@ -626,20 +826,19 @@
             </div>
         </div>
 
-        <!-- Tap Gestures -->
         <div class="card">
             <h2>Tap Gestures</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px;">
+            <div class="tap-grid">
                 <div class="app-item" style="gap: 14px;">
                     <div style="font-size: 2.2rem; flex-shrink: 0;">👆</div>
-                    <div>
+                    <div class="gesture-copy">
                         <div class="app-name">Single Tap</div>
                         <div class="app-desc">Action in current app (refresh / change mode)</div>
                     </div>
                 </div>
                 <div class="app-item" style="gap: 14px;">
                     <div style="font-size: 2.2rem; flex-shrink: 0;">👆👆</div>
-                    <div>
+                    <div class="gesture-copy">
                         <div class="app-name">Double Tap</div>
                         <div class="app-desc">Switch to next app</div>
                     </div>
@@ -647,10 +846,8 @@
             </div>
         </div>
 
-        <!-- What's Next -->
         <div class="card">
             <h2>What's Next?</h2>
-
             <h3>Set Up Weather</h3>
             <ol class="steps-list">
                 <li>Get your free API key at <a href="https://openweathermap.org/api" style="color: var(--accent);">openweathermap.org</a></li>
@@ -658,23 +855,15 @@
                 <li>Enter your city's zip code</li>
                 <li>Save!</li>
             </ol>
-
-            <h3 style="margin-top: 20px;">Halos Cube Companion App</h3>
-            <p>Download the Halos Cube Companion App and stream live content to your cube:</p>
-            <ul class="steps-list">
-                <li><strong>Now Playing</strong> — Album art and track info for most content playing on your PC</li>
-                <li><strong>System Stats</strong> — Show your CPU, RAM &amp; GPU usage in real-time</li>
-            </ul>
         </div>
 
-        <!-- Updates -->
         <div class="card">
             <h2>Keeping Your Cube Up to Date</h2>
             <p>Updates provide new features or address issues with the software.</p>
             <ol class="steps-list">
                 <li>Open dashboard: <code>http://halos-cube.local</code></li>
                 <li>Click "Updates" → "Check for Updates" button</li>
-                <li>If the Latest version is newer, click "Install Update"</li>
+                <li>If the latest version is newer, click "Install Update"</li>
                 <li>Wait for the firmware to update (&lt;2 minutes)
                     <ul style="margin-top: 8px; list-style: none; padding-left: 20px;">
                         <li style="color: var(--text-dim); font-style: italic;">While installing, do not power off!</li>
@@ -685,7 +874,6 @@
             </ol>
         </div>
 
-        <!-- Troubleshooting -->
         <div class="card">
             <h2>Need Help?</h2>
 
@@ -702,8 +890,8 @@
                 <h3>Can't see "Halos-Cube-Setup" network</h3>
                 <ul>
                     <li>Wait 60 seconds after power on</li>
-                    <li>Check you're looking at 2.4GHz networks (Halos Cube does not support 5GHz)</li>
-                    <li>Cube might already be connected to WiFi — check if clock is showing</li>
+                    <li>Check you're looking at 2.4GHz networks because Halos Cube does not support 5GHz</li>
+                    <li>Cube might already be connected to WiFi. Check if the clock is showing</li>
                     <li>Press the Reset Button (front, right side) and check again</li>
                 </ul>
             </div>
@@ -720,8 +908,8 @@
             <div class="troubleshooting">
                 <h3>Browser shows "Not Secure" warning on the setup page</h3>
                 <ul>
-                    <li>This is expected — the setup page uses local HTTP, not HTTPS</li>
-                    <li>It's safe to proceed; no personal data is transmitted over the internet during setup</li>
+                    <li>This is expected because the setup page uses local HTTP, not HTTPS</li>
+                    <li>It's safe to proceed and no personal data is transmitted over the internet during setup</li>
                     <li>After setup, your cube communicates only on your home network</li>
                 </ul>
             </div>
@@ -730,8 +918,8 @@
                 <h3>"http://halos-cube.local" doesn't work</h3>
                 <ul>
                     <li>Ensure your phone or computer is on the same WiFi network as the cube</li>
-                    <li>Try the device IP address instead — you can find it on the cube's display or in your router's connected devices list</li>
-                    <li>Some older Android devices don't support <code>.local</code> addresses — use the IP directly</li>
+                    <li>Try the device IP address instead. You can find it on the cube display or in your router's connected devices list</li>
+                    <li>Some older Android devices don't support <code>.local</code> addresses. Use the IP directly</li>
                 </ul>
             </div>
 
@@ -739,7 +927,7 @@
                 <h3>Display shows weird colors or glitches</h3>
                 <ul>
                     <li>Unplug and replug the cube</li>
-                    <li>May need to update firmware — Dashboard → Updates</li>
+                    <li>May need to update firmware. Dashboard → Updates</li>
                 </ul>
             </div>
 
@@ -770,7 +958,6 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer>
             <div class="footer-content">
                 <div class="footer-left">
@@ -784,7 +971,6 @@
                 </div>
             </div>
         </footer>
-
     </div>
 </body>
 </html>
